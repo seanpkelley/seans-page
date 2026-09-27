@@ -292,6 +292,19 @@ h1 .r{color:var(--red)}
   .tile:nth-child(2n){border-right:0}
   .tile:nth-last-child(-n+2){border-bottom:0}
 }
+
+/* Crowdfunding Watch panel sits on CW's graph paper (matches crowdfunding.seans.page) */
+#cw > .body{position:relative;background:var(--paper,#f5f2e9);overflow:hidden}
+#cw > .body::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(63,127,212,.46) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(63,127,212,.46) 1px,transparent 1px),
+    linear-gradient(rgba(63,127,212,.30) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(63,127,212,.30) 1px,transparent 1px);
+  background-size:90px 90px,90px 90px,18px 18px,18px 18px;opacity:.55}
+#cw .cw{position:relative;z-index:1}
+#cw .signup{background:#fffdf6;border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+#cw .btn{box-shadow:4px 4px 0 rgba(21,18,14,.25)}
 </style>
 </head>
 <body>
