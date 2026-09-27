@@ -1,0 +1,19 @@
+# Old WordPress URLs -> new site (301 = permanent)
+/about-sean-kelley/   /#about   301
+/about-sean-kelley    /#about   301
+/gamer/               /#about   301
+/gamer                /#about   301
+/author/sean/         /#about   301
+/author/sean          /#about   301
+/podcaster/           /#files   301
+/podcaster            /#files   301
+/content-creator/     /#files   301
+/content-creator      /#files   301
+/designs/             /         301
+/designs              /         301
+/category/tabletop-gaming/  /   301
+/category/tabletop-gaming   /   301
+/2022/12/27/5-things-to-consider-new-rpg-2023/  /  301
+/2022/12/27/5-things-to-consider-new-rpg-2023   /  301
+/recruiter/*          https://www.linkedin.com/in/seanpkelley/  301
+/recruiter            https://www.linkedin.com/in/seanpkelley/  301

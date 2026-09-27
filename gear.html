@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gear — RPG Sean</title>
+<meta name="description" content="The GM books, table gear and streaming kit RPG Sean actually uses: five tomes that changed how he runs a game, the supplies on his side of the screen, and the kit behind the live show.">
+<link rel="canonical" href="https://seans.page/gear">
+<meta property="og:title" content="Gear — RPG Sean">
+<meta property="og:description" content="The five GM books that changed how I run a game, plus the kit I actually use.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15120e; --paper:#f5f2e9; --red:#bf2f26;
+  --muted:#4d4740; --faint:#847c6f;
+  --sheet:#fdfcf9; --wash:#eeebe2;
+  --brandblue:rgba(63,127,212,.55);
+  --disp:"Bree Serif",Georgia,serif;
+  --cond:"Barlow Condensed",Impact,sans-serif;
+  --body:Inter,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#3a352c;color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.doc{max-width:1080px;margin:26px auto 60px;background:var(--sheet);
+  border:2.5px solid var(--ink);box-shadow:0 22px 50px rgba(0,0,0,.5);
+  padding:clamp(20px,3.4vw,40px);position:relative}
+
+/* ── shared chrome: title block ── */
+.title{display:grid;grid-template-columns:auto 1fr;border:2px solid var(--ink)}
+.title .mark{padding:16px 22px;border-right:2px solid var(--ink);display:flex;flex-direction:column;justify-content:center}
+.title .mark .big{font-family:var(--disp);font-weight:400;font-size:clamp(34px,4.5vw,50px);
+  line-height:.95;letter-spacing:-.01em;text-shadow:2px 2px 0 var(--brandblue)}
+.title .mark .big .r{color:var(--red)}
+.title .mark .sub{font-family:var(--cond);font-weight:600;font-size:clamp(14px,1.7vw,19px);
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:7px}
+.title .rows{display:flex;flex-direction:column}
+.title .row{display:flex;border-bottom:1px solid var(--ink);flex:1;align-items:center;min-height:34px}
+.title .row:last-child{border-bottom:0}
+.title .row .k{font-family:var(--cond);font-size:11.5px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);padding:0 14px;min-width:172px;
+  border-right:1px solid var(--ink);align-self:stretch;display:flex;align-items:center}
+.title .row .v{padding:0 14px;font-size:14.5px}
+@media (max-width:880px){
+  .title{grid-template-columns:1fr}
+  .title .mark{border-right:0;border-bottom:2px solid var(--ink)}
+}
+
+/* ── shared chrome: nav ── */
+.navbar{display:flex;border:2px solid var(--ink);border-top:0;background:var(--ink);flex-wrap:wrap}
+.navbar a{flex:1;text-align:center;text-decoration:none;color:var(--sheet);padding:10px 12px;
+  font-family:var(--cond);font-weight:600;font-size:14.5px;letter-spacing:.15em;
+  text-transform:uppercase;border-right:1px solid #453d34}
+.navbar a:last-child{border-right:0}
+.navbar a:hover,.navbar a.on{background:var(--red)}
+
+/* ── sections ── */
+.sec{margin-top:22px;border:2px solid var(--ink)}
+.sec > .bar{background:var(--ink);color:var(--sheet);display:flex;align-items:center;gap:12px;padding:7px 14px}
+.sec > .bar h2{font-family:var(--cond);font-weight:600;font-size:15px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0}
+.sec > .bar .note{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:#9b9182}
+.sec > .body{padding:clamp(16px,2.4vw,26px)}
+.intro{font-size:15px;line-height:1.62;color:var(--muted);margin:0 0 20px;max-width:78ch}
+.intro b{color:var(--ink);font-weight:600}
+.fine{font-family:var(--mono);font-size:10.5px;line-height:1.75;color:var(--muted);
+  margin:16px 0 0;max-width:96ch}
+
+/* ── item entries ── */
+.items{border:1.5px solid var(--ink)}
+.item{display:grid;grid-template-columns:44px 1fr auto;gap:0;
+  border-bottom:1.5px solid var(--ink);align-items:stretch}
+.item:last-child{border-bottom:0}
+.item:hover{background:var(--wash)}
+.item .no{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--red);
+  border-right:1px solid rgba(21,18,14,.35);display:flex;align-items:center;
+  justify-content:center;background:var(--wash)}
+.item .txt{padding:13px 16px}
+.item .nm{font-family:var(--cond);font-weight:700;font-size:19px;text-transform:uppercase;
+  line-height:1.05;margin-bottom:3px}
+.item .nm a{text-decoration:none;border-bottom:2px solid rgba(191,47,38,.45)}
+.item .nm a:hover{color:var(--red);border-color:var(--red)}
+.item .by{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+.item .ds{font-size:14px;line-height:1.55;color:var(--muted);max-width:62ch}
+.item .src{border-left:1px solid rgba(21,18,14,.35);display:flex;align-items:center;
+  padding:0 14px;font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--faint);white-space:nowrap}
+@media (max-width:700px){
+  .item{grid-template-columns:36px 1fr}
+  .item .src{grid-column:1/-1;border-left:0;border-top:1px dotted #b9b1a1;padding:8px 14px}
+}
+
+.grp{background:var(--wash);border-bottom:1.5px solid var(--ink);
+  border-top:1.5px solid var(--ink);font-family:var(--cond);font-weight:700;font-size:11.5px;
+  letter-spacing:.19em;text-transform:uppercase;color:var(--muted);padding:6px 14px}
+.items > .grp:first-child{border-top:0}
+.eq{width:100%;border-collapse:collapse;border:1.5px solid var(--ink)}
+.eq th{background:var(--ink);color:var(--sheet);font-family:var(--cond);font-weight:600;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;text-align:left;padding:8px 14px}
+.eq td{border-top:1px dotted #b9b1a1;padding:11px 14px;font-size:14px;line-height:1.55;color:var(--muted);vertical-align:top}
+.eq tr:hover td{background:var(--wash)}
+.eq td.eqn{width:34%}
+.eq td.eqn .by{display:block;margin-top:5px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--faint)}
+.eq tr.eqg td{background:var(--wash);border-top:1.5px solid var(--ink);font-family:var(--cond);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);padding:6px 14px}
+.eq tr.eqg:hover td{background:var(--wash)}
+.eq td.eqn a{font-family:var(--cond);font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.03em;
+  color:var(--ink);text-decoration:none;border-bottom:2px solid rgba(191,47,38,.45)}
+.eq td.eqn a:hover{color:var(--red);border-color:var(--red)}
+@media (max-width:600px){.eq thead{display:none}.eq td{display:block}.eq td.eqn{width:auto;padding-bottom:2px}
+  .eq td:not(.eqn){border-top:0;padding-top:4px}.eq tr.eqg td{border-top:1.5px solid var(--ink);padding-top:6px}}
+.pending{border:1.5px dashed var(--faint);padding:18px 20px;color:var(--muted);
+  font-size:14px;line-height:1.6}
+.pending b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;
+  font-size:13px;display:block;margin-bottom:6px;color:var(--ink)}
+
+/* ── footer ── */
+.foot{max-width:1080px;margin:0 auto 60px;padding:0 clamp(20px,3.4vw,40px)}
+.footrow{display:flex;gap:18px;flex-wrap:wrap;padding:16px 0;border-top:1px solid #5c5548;
+  font-family:var(--cond);font-size:13.5px;letter-spacing:.14em;text-transform:uppercase}
+.footrow a{color:#c9bfae;text-decoration:none}
+.footrow a:hover{color:#fff}
+.legal{font-family:var(--mono);font-size:10px;line-height:1.8;color:#8a8172;padding-bottom:20px}
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <div class="title">
+    <div class="mark">
+      <div class="big">RPG <span class="r">Sean</span></div>
+      <div class="sub">Tomes &middot; GM Gear &middot; Bardic Kit</div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="k">Rule</span><span class="v">Nothing listed I haven't used</span></div>
+      <div class="row"><span class="k">Disclosure</span><span class="v">Some links below are affiliate links</span></div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="index.html#aok">What I Run</a>
+    <a href="index.html#disadvantages">Flaws</a>
+    <a href="index.html#files">Shows</a>
+    <a href="gear.html" class="on">Gear</a>
+    <a href="https://crowdfunding.seans.page/">Crowdfunding Watch</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <!-- ═══ TOMES ═══ -->
+  <section class="sec" id="tomes">
+    <div class="bar"><h2>Tomes</h2><span class="note">Five that changed how I run</span></div>
+    <div class="body">
+      <p class="intro">Most game master advice is either a restatement of the rulebook or a lecture on
+      how you're doing it wrong. These five aren't. Each one changed something concrete about how I
+      prep or how I sit at the table &mdash; not how I feel about the hobby. <b>I own all of them.</b></p>
+
+      <table class="eq">
+          <thead><tr><th>Item</th><th>Description/Purpose</th></tr></thead>
+          <tbody>
+          <tr><td class="eqn"><a href="https://www.amazon.com/You-Want-Game-Master-Everything/dp/B0CNQBTR7L?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">So You Want To Be A Game Master</a><span class="by">Justin Alexander</span></td><td>The one I'd hand somebody who has never run a session and is scared to. Structured, practical, and it never once tells you that you're the god of your world.</td></tr>
+          <tr><td class="eqn"><a href="https://www.drivethrurpg.com/en/product/185391/Play-Dirty-15th-Anniversary-Edition?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Play Dirty</a><span class="by">John Wick &middot; 15th Anniversary Edition</span></td><td>Argumentative, occasionally wrong, and worth more than three polite books put together. You will disagree with parts of it. That's the point &mdash; it makes you say out loud why you run the way you do.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/Monsters-Know-What-Theyre-Doing/dp/1982122668?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">The Monsters Know What They're Doing</a><span class="by">Keith Ammann</span></td><td>Written with 5e in mind, yes, but still valuable for any fantasy game that uses the monsters Keith highlights. Not every monster is the proverbial nail to the players&rsquo; hammer.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/Play-Unsafe-Improvisation-Change-Roleplay/dp/1434824594?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Play Unsafe</a><span class="by">Graham Walmsley</span></td><td>The shortest book here and the best value per page. Improv principles aimed at people who prep too much &mdash; which is most of us, me included.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/Return-Lazy-Dungeon-Master-Michael/dp/1726631826?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Return of the Lazy Dungeon Master</a><span class="by">Michael E. Shea</span></td><td>Cuts prep down to what actually gets used at the table. If you've ever built a dungeon nobody entered, this book is about you and it is not unkind about it.</td></tr>
+          </tbody>
+        </table>
+    </div>
+  </section>
+
+  <!-- ═══ GM GEAR ═══ -->
+  <section class="sec" id="equipment">
+    <div class="bar"><h2>GM Gear</h2><span class="note">At the table</span></div>
+    <div class="body">
+      <p class="intro">The stuff on my side of the screen. Most of it is office supplies, and none of
+      it is fancy. <b>It's what I actually reach for mid-session.</b></p>
+
+      <table class="eq">
+          <thead><tr><th>Item</th><th>Description/Purpose</th></tr></thead>
+          <tbody>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B00QSR9KFU?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Legal pads</a></td><td>Easy to jot down details at the table in the moment.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B0CJX2153R?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Cardstock</a></td><td>Table tents for home games or cons. Preprint them and make the PC name, class, etc. big enough to read!</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B0BPLX7418?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Sand timers</a></td><td>Speed up combat, limit player delays. Put these on the table.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B0D8CDHPBB?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Dry-erase tokens</a></td><td>5 goblins? Put G1, G2, G3&hellip; on each and put them on the mat! Easy.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B077K8JVW4?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Index cards</a></td><td>Used for everything from adventure prep to initiative counters on top of the GM screen.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B0BLNL75KY?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Index card case</a></td><td>Helps sort your cards: monsters, items, room descriptions, etc.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B0D6RPPK9H?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Sticky notes</a></td><td>Pass notes at the table, stick one inside the GM screen for when a spell ends, and more.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B07XKJ6Q8X?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Pen loop</a></td><td>Great for journals to hold your pens and pencils.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B001GAOTSW?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Gel pens</a></td><td>Smooth writing. I prefer the .7mm tip.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B000GAU2RU?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Mechanical pencil</a></td><td>The pencil of pen(cil), paper and dice!</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B096WG3DMH?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Journal</a></td><td>There are cheaper knock-offs, but these are the best, IMO. I prefer dots over lined or blank.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/1441325867?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Stencil bookmark</a></td><td>Spice up your journal. Great for players too: mapping, adding emphasis, drawing straight lines, etc.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B07C1J543P?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Dice</a></td><td>THUD! Just don&rsquo;t use them on your friend&rsquo;s nice wooden table without a dice tray.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B07N4M2C11?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Dice trays</a></td><td>Don&rsquo;t be &lsquo;that guy&rsquo; whose dice fly off the table, under the table.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B003WZIOHQ?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Battlemat</a></td><td><i>The</i> mat to have if you like minis, positioning, tactics.</td></tr>
+          </tbody>
+        </table>
+    </div>
+  </section>
+
+  <!-- ═══ BARDIC KIT ═══ -->
+  <section class="sec" id="broadcast">
+    <div class="bar"><h2>Bardic Kit</h2><span class="note">What Saturday morning runs on</span></div>
+    <div class="body">
+      <p class="intro">Nothing here is aspirational. This is the kit that actually produces 255 live
+      streams and two podcasts, in a house with cats and dogs in it.</p>
+
+      <table class="eq">
+          <thead><tr><th>Item</th><th>Description/Purpose</th></tr></thead>
+          <tbody>
+          <tr class="eqg"><td colspan="2">Audio</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B00KCN83VI?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Electro-Voice RE320</a><span class="by">Large-diaphragm dynamic &middot; Variable-D</span></td><td>A dynamic mic hears what's in front of it and mostly ignores the rest of the room. When you record at home with rescue animals in the house, that's the whole ballgame.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B004MQSV04?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Cloudlifter CL-1</a><span class="by">Inline mic activator &middot; +25dB</span></td><td>The RE320 is a quiet microphone. This sits between it and the interface and gives it the gain it needs without turning the preamp up until you can hear the furnace. If you own a low-output dynamic and your recordings sound thin and hissy, this is the missing piece, and I wish I'd bought one sooner.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B0C5JSHP7M?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Focusrite Scarlett Solo</a><span class="by">USB-C audio interface &middot; 4th Gen</span></td><td>What everything plugs into on its way to the computer. Mine is a 3rd Gen and still fine &mdash; the link goes to the current one, because that's what you'd actually be able to buy.</td></tr>
+          <tr class="eqg"><td colspan="2">Control</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B09RMXK59C?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Elgato Stream Deck MK.2</a><span class="by">15-key studio controller &middot; white</span></td><td>Scene changes, overlays and stingers on one keypress, so the show never stops while I hunt for a window.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B09PRMCTGB?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">Elgato Stream Deck Pedal</a><span class="by">Three macro footswitches</span></td><td>The same idea for when both hands are already holding dice and a book.</td></tr>
+          <tr class="eqg"><td colspan="2">Camera &amp; light</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B0C3B6ZR1V?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">OBSBOT Tiny 2</a><span class="by">4K tracking PTZ webcam</span></td><td>Follows me when I turn to grab a book off the shelf instead of leaving the audience staring at an empty chair.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B089SYH1PY?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">GVM 80W softbox kit</a><span class="by">Key light &middot; 5600K &middot; 23.6&Prime; softbox</span></td><td>The main light. A softbox is the difference between looking lit and looking interrogated.</td></tr>
+          <tr><td class="eqn"><a href="https://www.amazon.com/dp/B08Z3BQYM1?tag=rpgsean-20" rel="sponsored nofollow" target="_blank">VIJIM VL120 RGB panel</a><span class="by">Accent light &middot; 2500&ndash;9000K &middot; rechargeable</span></td><td>Small, battery-powered, and the reason the background isn't a beige wall.</td></tr>
+          </tbody>
+        </table>
+    </div>
+  </section>
+
+</div>
+
+<footer class="foot">
+  <div class="footrow">
+    <a href="index.html">seans.page</a>
+    <a href="https://youtube.com/@rpgsean">YouTube</a>
+    <a href="https://bsky.app/profile/seans.page">Bluesky</a>
+    <a href="https://www.patreon.com/cw/seanpkelley">Patreon</a>
+    <a href="https://crowdfunding.seans.page/feed.xml">RSS</a>
+  </div>
+  <div class="legal">
+    seans.page &middot; &copy; 2026 Sean P. Kelley &middot; Some links on this site are affiliate links and
+    may earn a commission on purchases at no extra cost to you. Books are listed because I use them,
+    not because they pay. &middot; Character Record Sheet, Form 1D20 &middot; Gear
+  </div>
+</footer>
+
+</body>
+</html>

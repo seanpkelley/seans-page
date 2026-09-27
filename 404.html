@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — RPG Sean</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15120e; --paper:#f5f2e9; --red:#bf2f26;
+  --muted:#4d4740; --faint:#847c6f;
+  --sheet:#fdfcf9; --wash:#eeebe2;
+  --brandblue:rgba(63,127,212,.55);
+  --disp:"Bree Serif",Georgia,serif;
+  --cond:"Barlow Condensed",Impact,sans-serif;
+  --body:Inter,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#3a352c;color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.doc{max-width:1080px;margin:26px auto 60px;background:var(--sheet);
+  border:2.5px solid var(--ink);box-shadow:0 22px 50px rgba(0,0,0,.5);
+  padding:clamp(20px,3.4vw,40px);position:relative}
+
+/* ── shared chrome: title block ── */
+.title{display:grid;grid-template-columns:auto 1fr;border:2px solid var(--ink)}
+.title .mark{padding:16px 22px;border-right:2px solid var(--ink);display:flex;flex-direction:column;justify-content:center}
+.title .mark .big{font-family:var(--disp);font-weight:400;font-size:clamp(34px,4.5vw,50px);
+  line-height:.95;letter-spacing:-.01em;text-shadow:2px 2px 0 var(--brandblue)}
+.title .mark .big .r{color:var(--red)}
+.title .mark .sub{font-family:var(--cond);font-weight:600;font-size:clamp(14px,1.7vw,19px);
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:7px}
+.title .rows{display:flex;flex-direction:column}
+.title .row{display:flex;border-bottom:1px solid var(--ink);flex:1;align-items:center;min-height:34px}
+.title .row:last-child{border-bottom:0}
+.title .row .k{font-family:var(--cond);font-size:11.5px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);padding:0 14px;min-width:172px;
+  border-right:1px solid var(--ink);align-self:stretch;display:flex;align-items:center}
+.title .row .v{padding:0 14px;font-size:14.5px}
+@media (max-width:880px){
+  .title{grid-template-columns:1fr}
+  .title .mark{border-right:0;border-bottom:2px solid var(--ink)}
+}
+
+/* ── shared chrome: nav ── */
+.navbar{display:flex;border:2px solid var(--ink);border-top:0;background:var(--ink);flex-wrap:wrap}
+.navbar a{flex:1;text-align:center;text-decoration:none;color:var(--sheet);padding:10px 12px;
+  font-family:var(--cond);font-weight:600;font-size:14.5px;letter-spacing:.15em;
+  text-transform:uppercase;border-right:1px solid #453d34}
+.navbar a:last-child{border-right:0}
+.navbar a:hover,.navbar a.on{background:var(--red)}
+
+/* ── sections ── */
+.sec{margin-top:22px;border:2px solid var(--ink)}
+.sec > .bar{background:var(--ink);color:var(--sheet);display:flex;align-items:center;gap:12px;padding:7px 14px}
+.sec > .bar h2{font-family:var(--cond);font-weight:600;font-size:15px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0}
+.sec > .bar .note{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:#9b9182}
+.sec > .body{padding:clamp(16px,2.4vw,26px)}
+.intro{font-size:15px;line-height:1.62;color:var(--muted);margin:0 0 20px;max-width:78ch}
+.intro b{color:var(--ink);font-weight:600}
+.fine{font-family:var(--mono);font-size:10.5px;line-height:1.75;color:var(--muted);
+  margin:16px 0 0;max-width:96ch}
+
+/* ── item entries ── */
+.items{border:1.5px solid var(--ink)}
+.item{display:grid;grid-template-columns:44px 1fr auto;gap:0;
+  border-bottom:1.5px solid var(--ink);align-items:stretch}
+.item:last-child{border-bottom:0}
+.item:hover{background:var(--wash)}
+.item .no{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--red);
+  border-right:1px solid rgba(21,18,14,.35);display:flex;align-items:center;
+  justify-content:center;background:var(--wash)}
+.item .txt{padding:13px 16px}
+.item .nm{font-family:var(--cond);font-weight:700;font-size:19px;text-transform:uppercase;
+  line-height:1.05;margin-bottom:3px}
+.item .nm a{text-decoration:none;border-bottom:2px solid rgba(191,47,38,.45)}
+.item .nm a:hover{color:var(--red);border-color:var(--red)}
+.item .by{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+.item .ds{font-size:14px;line-height:1.55;color:var(--muted);max-width:62ch}
+.item .src{border-left:1px solid rgba(21,18,14,.35);display:flex;align-items:center;
+  padding:0 14px;font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--faint);white-space:nowrap}
+@media (max-width:700px){
+  .item{grid-template-columns:36px 1fr}
+  .item .src{grid-column:1/-1;border-left:0;border-top:1px dotted #b9b1a1;padding:8px 14px}
+}
+
+.grp{background:var(--wash);border-bottom:1.5px solid var(--ink);
+  border-top:1.5px solid var(--ink);font-family:var(--cond);font-weight:700;font-size:11.5px;
+  letter-spacing:.19em;text-transform:uppercase;color:var(--muted);padding:6px 14px}
+.items > .grp:first-child{border-top:0}
+.eq{width:100%;border-collapse:collapse;border:1.5px solid var(--ink)}
+.eq th{background:var(--ink);color:var(--sheet);font-family:var(--cond);font-weight:600;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;text-align:left;padding:8px 14px}
+.eq td{border-top:1px dotted #b9b1a1;padding:11px 14px;font-size:14px;line-height:1.55;color:var(--muted);vertical-align:top}
+.eq tr:hover td{background:var(--wash)}
+.eq td.eqn{width:34%}
+.eq td.eqn .by{display:block;margin-top:5px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--faint)}
+.eq tr.eqg td{background:var(--wash);border-top:1.5px solid var(--ink);font-family:var(--cond);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);padding:6px 14px}
+.eq tr.eqg:hover td{background:var(--wash)}
+.eq td.eqn a{font-family:var(--cond);font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.03em;
+  color:var(--ink);text-decoration:none;border-bottom:2px solid rgba(191,47,38,.45)}
+.eq td.eqn a:hover{color:var(--red);border-color:var(--red)}
+@media (max-width:600px){.eq thead{display:none}.eq td{display:block}.eq td.eqn{width:auto;padding-bottom:2px}
+  .eq td:not(.eqn){border-top:0;padding-top:4px}.eq tr.eqg td{border-top:1.5px solid var(--ink);padding-top:6px}}
+.pending{border:1.5px dashed var(--faint);padding:18px 20px;color:var(--muted);
+  font-size:14px;line-height:1.6}
+.pending b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;
+  font-size:13px;display:block;margin-bottom:6px;color:var(--ink)}
+
+/* ── footer ── */
+.foot{max-width:1080px;margin:0 auto 60px;padding:0 clamp(20px,3.4vw,40px)}
+.footrow{display:flex;gap:18px;flex-wrap:wrap;padding:16px 0;border-top:1px solid #5c5548;
+  font-family:var(--cond);font-size:13.5px;letter-spacing:.14em;text-transform:uppercase}
+.footrow a{color:#c9bfae;text-decoration:none}
+.footrow a:hover{color:#fff}
+.legal{font-family:var(--mono);font-size:10px;line-height:1.8;color:#8a8172;padding-bottom:20px}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="title">
+    <div class="mark">
+      <div class="big">RPG <span class="r">Sean</span></div>
+      <div class="sub">Page not found</div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="k">Roll</span><span class="v">Natural 1</span></div>
+      <div class="row"><span class="k">Result</span><span class="v">This page isn't here. It may have moved when the site was rebuilt.</span></div>
+    </div>
+  </div>
+  <nav class="navbar">
+    <a href="/">Home</a>
+    <a href="/gear">Gear</a>
+    <a href="https://crowdfunding.seans.page/">Crowdfunding Watch</a>
+  </nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RPG Sean — a working GM's honest take on tabletop RPGs</title>
+<meta name="description" content="RPG Sean is Sean P. Kelley: game master, streamer and podcaster. Between Sessions goes live on YouTube every Saturday at 08:00 Central, and Crowdfunding Watch lists every TTRPG campaign closing this week.">
+<link rel="canonical" href="https://seans.page/">
+<meta property="og:title" content="RPG Sean — a working GM's honest take on tabletop RPGs">
+<meta property="og:description" content="Live every Saturday, 08:00 Central. Beyond 5e, GM first.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://seans.page/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15120e; --paper:#f5f2e9; --red:#bf2f26;
+  --muted:#4d4740; --faint:#847c6f;
+  --sheet:#fdfcf9; --wash:#eeebe2;
+  --brandblue:rgba(63,127,212,.55);
+  --disp:"Bree Serif",Georgia,serif;
+  --cond:"Barlow Condensed",Impact,sans-serif;
+  --body:Inter,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#3a352c;color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.speclabel{background:#0d0b08;color:#c9bfae;font-family:var(--mono);font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;padding:10px 24px;text-align:center}
+.speclabel b{color:#e0d7c4}
+
+.doc{
+  max-width:1080px;margin:26px auto 60px;background:var(--sheet);
+  border:2.5px solid var(--ink);box-shadow:0 22px 50px rgba(0,0,0,.5);
+  padding:clamp(20px,3.4vw,40px);position:relative;
+}
+
+/* ─────────── title block ─────────── */
+.title{display:grid;grid-template-columns:auto 1fr;border:2px solid var(--ink)}
+.title .mark{padding:16px 22px;border-right:2px solid var(--ink);display:flex;flex-direction:column;justify-content:center}
+.title .mark .big{font-family:var(--disp);font-weight:400;font-size:clamp(34px,4.5vw,50px);
+  line-height:.95;letter-spacing:-.01em;text-shadow:2px 2px 0 var(--brandblue)}
+.title .mark .big .r{color:var(--red)}
+.title .mark .sub{font-family:var(--cond);font-weight:600;font-size:clamp(14px,1.7vw,19px);
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:7px}
+.title .rows{display:flex;flex-direction:column}
+.title .row{display:flex;border-bottom:1px solid var(--ink);flex:1;align-items:center;min-height:34px}
+.title .row:last-child{border-bottom:0}
+.title .row .k{font-family:var(--cond);font-size:11.5px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);padding:0 14px;min-width:172px;border-right:1px solid var(--ink);
+  align-self:stretch;display:flex;align-items:center}
+.title .row .v{padding:0 14px;font-size:14.5px}
+.title .row .v b{font-weight:600}
+.stamp{display:inline-flex;align-items:center;gap:7px;border:2px solid var(--red);color:var(--red);
+  font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.19em;text-transform:uppercase;
+  padding:3px 9px;transform:rotate(-1.2deg)}
+.stamp i{width:7px;height:7px;border-radius:50%;background:var(--red);font-style:normal;animation:blip 1.7s infinite}
+@keyframes blip{0%,55%{opacity:1}56%,100%{opacity:.2}}
+
+/* ─────────── nav ─────────── */
+.navbar{display:flex;border:2px solid var(--ink);border-top:0;background:var(--ink);flex-wrap:wrap}
+.navbar a{flex:1;text-align:center;text-decoration:none;color:var(--sheet);padding:10px 12px;
+  font-family:var(--cond);font-weight:600;font-size:14.5px;letter-spacing:.15em;text-transform:uppercase;
+  border-right:1px solid #453d34}
+.navbar a:last-child{border-right:0}
+.navbar a:hover,.navbar a.on{background:var(--red)}
+
+/* ─────────── section ─────────── */
+.sec{margin-top:22px;border:2px solid var(--ink)}
+.sec > .bar{background:var(--ink);color:var(--sheet);display:flex;align-items:center;gap:12px;padding:7px 14px}
+.sec > .bar h2{font-family:var(--cond);font-weight:600;font-size:15px;letter-spacing:.2em;text-transform:uppercase;margin:0}
+.sec > .bar .note{margin-left:auto;font-family:var(--mono);font-size:12px;letter-spacing:.05em;
+  text-transform:uppercase;color:#b3aa9b}
+
+/* rating pips + ran/played flags */
+.pips{display:inline-flex;gap:3px;white-space:nowrap}
+.pips i{width:10px;height:10px;border:1.5px solid var(--ink);border-radius:50%;display:block}
+.pips i.on{background:var(--ink)}
+.pips i.on.top{background:var(--red);border-color:var(--red)}
+.oop{font-family:var(--mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--faint);border:1px solid var(--faint);padding:1px 4px;white-space:nowrap;margin-left:2px}
+.flags{display:inline-flex;gap:4px;white-space:nowrap}
+.fl{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  padding:1px 6px;border:1.5px solid var(--ink)}
+.fl.ran{background:var(--ink);color:var(--sheet)}
+.fl.played{background:transparent;color:var(--muted);border-color:var(--faint)}
+
+/* areas of knowledge list */
+.aok{column-count:3;column-gap:26px}
+.aok .g{break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;
+  display:flex;align-items:baseline;justify-content:space-between;gap:9px;
+  padding:5px 0;border-bottom:1px dotted rgba(132,124,111,.5)}
+.aok .g .n{font-family:var(--cond);font-weight:700;font-size:15.5px;text-transform:uppercase;line-height:1.18}
+.aok .g .n a{text-decoration:none;border-bottom:2px solid rgba(191,47,38,.45)}
+.aok .g .n a:hover{border-color:var(--red);color:var(--red)}
+.aok .flags{flex:none}
+#aok .intro{max-width:none}
+#aok .fine{max-width:none;column-count:2;column-gap:26px}
+@media (max-width:700px){#aok .fine{column-count:1}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--ink)}
+.contact > a{padding:16px 18px;text-decoration:none;border-right:1.5px solid var(--ink);display:block}
+.contact > a:last-child{border-right:0}
+.contact > a:hover{background:var(--wash)}
+.contact .ck{font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.contact .cv{font-family:var(--disp);font-size:clamp(17px,2.2vw,22px);border-bottom:1.5px solid var(--ink);
+  padding-bottom:4px;display:inline-block}
+.contact .cn{font-size:13px;line-height:1.55;color:var(--muted);margin-top:9px}
+@media (max-width:700px){
+  .contact{grid-template-columns:1fr}
+  .contact > a{border-right:0;border-bottom:1.5px solid var(--ink)}
+  .contact > a:last-child{border-bottom:0}
+}
+.sec > .body{padding:clamp(16px,2.4vw,26px)}
+
+/* ─────────── photos ─────────── */
+.ph{border:1.5px solid var(--ink);overflow:hidden;background:var(--wash)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph.r45{aspect-ratio:4/5}
+.ph.r43{aspect-ratio:4/3}
+.ph.r169{aspect-ratio:16/9}
+.ph.r219{aspect-ratio:21/9}
+.figrow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.2vw,24px)}
+@media (max-width:700px){.figrow{grid-template-columns:1fr}}
+.figcap{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);border-bottom:1px solid var(--ink);padding-bottom:4px;margin-bottom:6px}
+.figfoot{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--faint);
+  border-top:1px solid rgba(21,18,14,.4);padding-top:5px;margin-top:5px;line-height:1.6}
+
+/* ─────────── hero ─────────── */
+.hero{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(20px,3vw,34px);align-items:start}
+h1{font-family:var(--cond);font-weight:700;text-transform:uppercase;
+  font-size:clamp(42px,6.2vw,74px);line-height:.86;margin:0 0 6px}
+h1 .r{color:var(--red)}
+.h1sub{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  padding:7px 0;margin:14px 0 18px}
+.lede{font-size:16px;line-height:1.62;color:var(--muted);max-width:47ch;margin:0 0 20px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-family:var(--cond);font-weight:700;font-size:15px;
+  letter-spacing:.13em;text-transform:uppercase;padding:11px 20px;border:2px solid var(--ink);
+  background:var(--ink);color:var(--sheet)}
+.btn:hover{background:var(--red);border-color:var(--red)}
+.btn.alt{background:transparent;color:var(--ink)}
+.btn.alt:hover{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+
+/* ─────────── trait tables ─────────── */
+.traits{display:grid;grid-template-columns:1fr;border:1.5px solid var(--ink);margin-top:16px}
+.tcap{background:var(--wash);border-bottom:1.5px solid var(--ink);text-align:center;
+  font-family:var(--cond);font-weight:700;font-size:12.5px;letter-spacing:.19em;text-transform:uppercase;padding:6px}
+.tilewrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.tile{border-right:1.5px solid var(--ink);padding:20px 10px 16px;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start;text-align:center;gap:4px}
+.tile:last-child{border-right:0}
+.tile .val{font-family:var(--disp);font-weight:400;color:var(--red);font-size:clamp(30px,4vw,42px);line-height:1}
+.tile .n{font-family:var(--cond);font-weight:600;font-size:11.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--muted)}
+.tile .n small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.05em;
+  color:var(--faint);text-transform:none;margin-top:2px}
+
+/* ─────────── AOK table ─────────── */
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl{width:100%;min-width:560px;border-collapse:collapse;border:1.5px solid var(--ink)}
+.tbl th{background:var(--wash);border-bottom:1.5px solid var(--ink);border-right:1px solid var(--ink);
+  font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  padding:7px 10px;text-align:left}
+.tbl th:last-child{border-right:0}
+.tbl td{padding:9px 10px;border-bottom:1px solid rgba(21,18,14,.5);border-right:1px solid rgba(21,18,14,.35);
+  font-size:14px;vertical-align:middle}
+.tbl td:last-child{border-right:0}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tbody tr:hover td{background:var(--wash)}
+.tbl .roll{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--red);width:38px;text-align:center}
+.tbl .nm{font-family:var(--cond);font-weight:700;font-size:17px;text-transform:uppercase;white-space:nowrap}
+.tbl .nm a{text-decoration:none;border-bottom:2px solid rgba(191,47,38,.45)}
+.tbl .nm a:hover{border-color:var(--red);color:var(--red)}
+.tbl .ds{color:var(--muted);font-size:13px}
+.tbl .pf{font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap}
+.tbl .pf a{text-decoration:none;border-bottom:1px dotted var(--faint)}
+.tbl .pf a:hover{color:var(--red);border-color:var(--red)}
+.tag{display:inline-block;font-family:var(--cond);font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:2px 7px;border:1.5px solid var(--ink)}
+.tag.spec{background:var(--red);color:#fff;border-color:var(--red)}
+.fine{font-family:var(--mono);font-size:10.5px;line-height:1.75;color:var(--muted);margin:12px 0 0;max-width:96ch}
+.intro{font-size:15px;line-height:1.62;color:var(--muted);margin:0 0 18px;max-width:78ch}
+.intro b{color:var(--ink);font-weight:600}
+
+/* ─────────── feats (the shows) ─────────── */
+.files{display:grid;grid-template-columns:repeat(auto-fit,minmax(226px,1fr));border:1.5px solid var(--ink)}
+.file{border-right:1.5px solid var(--ink);display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.file:last-child{border-right:0}
+.file:hover{background:var(--wash)}
+.file:hover .go{background:var(--red);color:#fff;border-color:var(--red)}
+.file .oh{background:var(--wash);border-bottom:1.5px solid var(--ink);padding:6px 12px;display:flex;align-items:center;gap:8px}
+.file:hover .oh{background:var(--ink);color:var(--sheet)}
+.file .oh .c{font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--red)}
+.file .oh .s{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.file:hover .oh .s{color:#9b9182}
+.file .oh .s.live{color:var(--red);font-weight:700}
+.file .ob{padding:15px 14px;display:flex;flex-direction:column;flex:1}
+.file h3{font-family:var(--cond);font-weight:700;font-size:21px;text-transform:uppercase;margin:0 0 8px;line-height:1.02}
+.file p{margin:0 0 14px;font-size:13.5px;line-height:1.55;color:var(--muted);flex:1}
+.file .m{font-family:var(--mono);font-size:10px;color:var(--faint);margin-bottom:10px}
+.go{display:inline-block;align-self:flex-start;font-family:var(--cond);font-weight:700;font-size:12px;
+  letter-spacing:.15em;text-transform:uppercase;padding:5px 11px;border:1.5px solid var(--ink)}
+
+/* ─────────── fields ─────────── */
+.field{margin-bottom:14px}
+.field .line{border-bottom:1.5px solid var(--ink);min-height:26px;font-family:var(--disp);
+  font-size:17px;padding-bottom:3px;display:flex;align-items:flex-end}
+.field .lbl{font-family:var(--cond);font-size:10.5px;font-weight:600;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--muted);padding-top:4px}
+
+/* ─────────── about ─────────── */
+.about{display:grid;grid-template-columns:.68fr 1.32fr;gap:clamp(20px,3vw,36px);align-items:start}
+.about h3{font-family:var(--cond);font-weight:700;text-transform:uppercase;font-size:clamp(24px,3.2vw,36px);
+  line-height:.96;margin:0 0 14px}
+.about p{font-size:15px;line-height:1.68;color:var(--muted);margin:0 0 13px;max-width:58ch}
+.about p strong{color:var(--ink)}
+.rules{border:1.5px solid var(--ink);margin-top:18px}
+.rules .creed{margin:0;padding:14px 14px 13px;border-bottom:1.5px solid var(--ink);
+  font-family:var(--cond);font-size:17px;line-height:1.35;font-weight:600;color:var(--red);
+  letter-spacing:.01em}
+.rules .rc{background:var(--ink);color:var(--sheet);font-family:var(--cond);font-weight:600;font-size:11.5px;
+  letter-spacing:.19em;text-transform:uppercase;padding:6px 12px}
+.rules ul{margin:0;padding:0;list-style:none}
+.rules li{padding:11px 14px 11px 34px;position:relative;font-size:14px;line-height:1.55;
+  border-bottom:1px solid rgba(21,18,14,.4)}
+.rules li:last-child{border-bottom:0}
+.rules li::before{content:"";position:absolute;left:13px;top:14px;width:11px;height:11px;border:1.5px solid var(--ink)}
+
+/* ─────────── crowdfunding ─────────── */
+.cw{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(20px,3vw,34px);align-items:start}
+.cw h3{font-family:var(--cond);font-weight:700;text-transform:uppercase;font-size:clamp(28px,3.8vw,44px);
+  line-height:.94;margin:0 0 12px}
+.cw h3 .r{color:var(--red)}
+.cw p{font-size:15px;line-height:1.62;color:var(--muted);margin:0 0 10px;max-width:48ch}
+.signup{border:1.5px solid var(--ink)}
+.signup .sc{background:var(--ink);color:var(--sheet);font-family:var(--cond);font-weight:600;font-size:11.5px;
+  letter-spacing:.19em;text-transform:uppercase;padding:6px 12px}
+.signup .sb{padding:16px 14px}
+.signup form{margin:0}
+.signup .fld{display:block;width:100%;box-sizing:border-box;border:0;border-bottom:1.5px solid var(--ink);height:30px;
+  background:transparent;font:15px var(--body);color:var(--ink);padding:0 2px;border-radius:0}
+.signup .fld:focus{outline:none;border-bottom-color:var(--red)}
+.signup .fld::placeholder{color:var(--faint)}
+.signup button.btn{cursor:pointer}
+.signup form + .fine{margin-top:12px}
+.signup .fldlbl{font-family:var(--cond);font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--muted);margin:4px 0 16px;display:block}
+.signup .btn{width:100%;text-align:center}
+
+/* ─────────── footer ─────────── */
+.foot{margin-top:22px;border:2px solid var(--ink)}
+.hire{padding:12px 16px;border-bottom:1.5px solid var(--ink);background:var(--wash);
+  font-size:13.5px;line-height:1.55;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.hire b{font-family:var(--cond);font-size:12px;letter-spacing:.17em;text-transform:uppercase}
+.hire a{color:var(--red);font-weight:600}
+.footrow{display:flex;background:var(--ink);flex-wrap:wrap}
+.footrow a{flex:1;text-align:center;text-decoration:none;color:var(--sheet);padding:10px 12px;
+  font-family:var(--cond);font-weight:600;font-size:13.5px;letter-spacing:.15em;text-transform:uppercase;
+  border-right:1px solid #453d34}
+.footrow a:hover{background:var(--red)}
+.footrow a:last-child{border-right:0}
+.legal{font-family:var(--mono);font-size:9px;line-height:1.75;color:var(--muted);padding:10px 14px;
+  border-top:1.5px solid var(--ink)}
+
+@media (max-width:880px){
+  .hero,.about,.cw,.traits{grid-template-columns:1fr}
+  .file{border-right:0;border-bottom:1.5px solid var(--ink)}
+  .file:last-child{border-bottom:0}
+  .title{grid-template-columns:1fr}
+  .title .mark{border-right:0;border-bottom:2px solid var(--ink)}
+  .tbl .ds{display:none}
+  .aok{column-count:2}
+}
+
+@media (max-width:560px){
+  .aok{column-count:1}
+  .tilewrap{grid-template-columns:repeat(2,1fr)}
+  .tile{border-bottom:1.5px solid var(--ink)}
+  .tile:nth-child(2n){border-right:0}
+  .tile:nth-last-child(-n+2){border-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<div class="speclabel">Working design — <b>seans.page home · Character Record Sheet</b> — games list · contact added · § markers removed</div>
+
+<div class="doc">
+
+  <!-- ═══ TITLE BLOCK ═══ -->
+  <div class="title">
+    <div class="mark">
+      <div class="big">RPG <span class="r">Sean</span></div>
+      <div class="sub">Character Record Sheet</div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="k">Name</span><span class="v"><b>Sean P. Kelley</b></span></div>
+      <div class="row"><span class="k">Class</span><span class="v">Game Master · Streamer · Podcaster</span></div>
+      <div class="row"><span class="k">Level</span><span class="v">20 (7/6/6)</span></div>
+      <div class="row"><span class="k">Specialties</span><span class="v">Delta Green, Star Wars FFG, D&amp;D (various), Year Zero Engine</span></div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <a href="#live" class="on">Live</a>
+    <a href="#aok">What I Run</a>
+    <a href="#disadvantages">Flaws</a>
+    <a href="#files">Shows</a>
+    <a href="gear.html">Gear</a>
+    <a href="#cw">Crowdfunding Watch</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ═══ §1 HERO ═══ -->
+  <section class="sec" id="live">
+    <div class="bar"><h2>Class Features</h2><span class="note">Weekly · 255 logged</span></div>
+    <div class="body">
+      <div class="hero">
+        <div>
+          <h1>Between<br><span class="r">Sessions</span></h1>
+          <div class="h1sub">Saturday · 08:00 Central · Live on YouTube · Chat is the co-host</div>
+          <p class="lede">The week in tabletop, argued out live. News, crowdfunding, print releases.
+          No script, no sponsor read, and no pretending I've read everything.</p>
+          <div class="btnrow">
+            <a class="btn" href="https://www.youtube.com/@rpgsean">Watch live</a>
+            <a class="btn alt" href="https://www.youtube.com/@rpgsean/streams">Last Saturday's VOD</a>
+          </div>
+        </div>
+        <div>
+          <div class="figcap">Fig. 1 — Live, Saturday morning</div>
+          <div class="ph r169"><img src="Photos/rpg-sean-stream.jpg" alt="Sean live on stream in his game room, chat comment overlaid" style="object-position:center 40%"></div>
+          <div class="figfoot">Chat is the co-host. That's a real comment, mid-show.</div>
+        </div>
+      </div>
+      <div class="traits">
+        <div class="tcap">Record</div>
+        <div class="tilewrap">
+          <div class="tile"><div class="val">255</div><div class="n">Live streams</div></div>
+          <div class="tile"><div class="val">121</div><div class="n">Long-form videos</div></div>
+          <div class="tile"><div class="val">487</div><div class="n">Podcast episodes</div></div>
+          <div class="tile"><div class="val">24</div><div class="n">Years behind screen<small>since 2002</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §2 AREAS OF KNOWLEDGE ═══ -->
+  <section class="sec" id="aok">
+    <div class="bar"><h2>Areas of Knowledge</h2><span class="note">67 systems &middot; GM, played, or both</span></div>
+    <div class="body">
+      <p class="intro">Every system I&rsquo;ve actually sat down with &mdash; no scores, no rankings, no
+      tier list. <b>GM</b> means I&rsquo;ve been behind the screen for it. <b>Played</b> means I&rsquo;ve
+      only been on the other side of it. If a game is on this list, I&rsquo;ve put real table time into
+      it; if it isn&rsquo;t, I&rsquo;ll say so rather than bluff.</p>
+
+      <div class="aok">
+        <div class="g"><span class="n"><a href="https://www.dmsguild.com/en/product/17003/players-handbook-1e?affiliate_id=457476" rel="sponsored nofollow" target="_blank">AD&amp;D</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/329319/against-the-darkmaster-core-rules?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Against the Darkmaster</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/461723/agent-provocateur-the-role-playing-game?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Agent Provocateur</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/321387/alice-is-missing-a-silent-roleplaying-game?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Alice is Missing</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/520969/alien-rpg-evolved-edition-core-rulebook?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Alien</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/399929/blade-runner-rpg-core-rulebook?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Blade Runner</a></span><span class="flags"><span class="fl ran">GM</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/170689/blades-in-the-dark?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Blades in the Dark</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n">Breakers</span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/150997/call-of-cthulhu-7th-edition-keeper-s-rulebook?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Call of Cthulhu</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n">Call of Cthulhu d20</span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/505142/castles-crusades-players-handbook?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Castles &amp; Crusades</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n">Conan 2d20</span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/204291/coriolis-the-third-horizon-core-book?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Coriolis: The Third Horizon</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/50354/cyberpunk-2-0-2-0-the-second-edition-version-2-01?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Cyberpunk 2020</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/333585/cyberpunk-red?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Cyberpunk Red</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/393473/cy-borg-core-rules?affiliate_id=457476" rel="sponsored nofollow" target="_blank">CY_BORG</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.dmsguild.com/product/148008/Players-Handbook-35?affiliate_id=457476" rel="sponsored nofollow" target="_blank">D&amp;D 3.5</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n">D&amp;D 5e</span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/473883/deathmatch-island?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Deathmatch Island</a></span><span class="flags"><span class="fl ran">GM</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/181674/delta-green-agent-s-handbook?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Delta Green</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/101050/dungeon-crawl-classics-rpg-dcc-rpg?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Dungeon Crawl Classics</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/108028/dungeon-world?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Dungeon World</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/335287/fiasco?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Fiasco</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/258593/forbidden-lands-core-game?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Forbidden Lands</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/224830/gurps-basic-set-characters?affiliate_id=457476" rel="sponsored nofollow" target="_blank">GURPS</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/399483/into-the-odd-remastered?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Into the Odd</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n">James Bond 007</span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.onesevendesign.com/ladyblackbird/" rel="sponsored nofollow" target="_blank">Lady Blackbird</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n">Marvel Super Heroes (TSR)</span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/211831/mspe-mercenaries-spies-and-private-eyes-combined-edition-rpg?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Mercenaries, Spies &amp; Private Eyes</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/484222/mothership-player-s-survival-guide?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Mothership</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/295910/moerk-borg-english?affiliate_id=457476" rel="sponsored nofollow" target="_blank">MÖRK BORG</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/106783/night-s-black-agents?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Night&rsquo;s Black Agents</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/279183/old-school-essentials-classic-fantasy-rules-tome?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Old School Essentials</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/370267/the-one-ring-core-rules?affiliate_id=457476" rel="sponsored nofollow" target="_blank">The One Ring 2e</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/436961/outcast-silver-raiders-player-s-guide?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Outcast Silver Raiders</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/449021/outgunned?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Outgunned</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/438184/pathfinder-roleplaying-game-core-rulebook-1e-ogl?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Pathfinder 1e</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/480031/pendragon-core-rulebook?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Pendragon 6e</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/365813/Rangers-of-the-Midden-Vale?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Rangers of the Midden Vale</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/261539/savage-worlds-adventure-edition?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Savage Worlds</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/198681/scum-and-villainy?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Scum &amp; Villainy</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.thearcanelibrary.com/products/shadowdark-rpg-pdf" rel="sponsored nofollow" target="_blank">Shadowdark</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/115985/shadowrun-fifth-edition-core-rulebook-master-index-edition?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Shadowrun 5e</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/24692/classic-spycraft-spycraft-espionage-handbook?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Spycraft 1e</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/12001/spycraft-2-0-rulebook-second-printing?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Spycraft 2.0</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n">Star Trek (FASA)</span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/489217/star-trek-adventures-second-edition-core-rulebook?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Star Trek Adventures 2e</a></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.nobleknight.com/P/2148025524/Edge-of-the-Empire---Core-Rulebook-2nd-Printing?awid=859" rel="sponsored nofollow" target="_blank">Star Wars (FFG)</a> <span class="oop">print only</span></span><span class="flags"><span class="fl ran">GM</span></span></div>
+        <div class="g"><span class="n">Star Wars (WEG d6) <span class="oop">print only</span></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.nobleknight.com/P/17045/Star-Wars-Roleplaying-Game-Revised-Edition?awid=859" rel="sponsored nofollow" target="_blank">Star Wars d20</a> <span class="oop">print only</span></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n">Star Wars Saga Edition <span class="oop">print only</span></span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/408716/swords-of-the-serpentine?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Swords of the Serpentine</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/163293/symbaroum-core-rulebook?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Symbaroum</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/210617/tales-from-the-loop-rpg-rulebook?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Tales from the Loop</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/267432/things-from-the-flood-rpg-rulebook?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Things from the Flood</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/541894/thunder-road-vendetta-rpg?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Thunder Road</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/380944/tiny-spies?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Tiny Spies</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n">Top Secret</span><span class="flags"><span class="fl ran">GM</span><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/55567/trail-of-cthulhu?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Trail of Cthulhu</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/358090/twilight-2000-4th-edition-core-set?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Twilight: 2000 4e</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/319119/vaesen-nordic-horror-roleplaying?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Vaesen</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/458995/the-walking-dead-universe-rpg?affiliate_id=457476" rel="sponsored nofollow" target="_blank">The Walking Dead</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/348429/weird-frontiers-rpg?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Weird Frontiers</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/164226/white-lies?affiliate_id=457476" rel="sponsored nofollow" target="_blank">White Lies</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/233842/wraith-the-oblivion-20th-anniversary-edition?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Wraith: The Oblivion</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+        <div class="g"><span class="n"><a href="https://www.drivethrurpg.com/en/product/499743/xcrawl-classics-rpg-xcc-rpg?affiliate_id=457476" rel="sponsored nofollow" target="_blank">XCrawl Classics</a></span><span class="flags"><span class="fl played">Played</span></span></div>
+      </div>
+
+      <p class="fine">Where a game is still in print, the title links to where you can buy it, and most of
+      those are affiliate links &mdash; if you buy, I may earn a small commission at no extra cost to you.
+      Nothing is on this list because it pays; the list came first and the links came after, which is why
+      a good number of these link to nothing at all. Shadowdark goes straight to The Arcane Library and
+      Lady Blackbird to its author, where I earn nothing, because that&rsquo;s where those books actually
+      live. The licensed games of the 80s and 90s &mdash; Star Wars, Marvel, James Bond, FASA&rsquo;s Star
+      Trek &mdash; have no legal digital edition at all, so those point at used print or nowhere, and
+      I&rsquo;m not going to pretend otherwise.</p>
+    </div>
+  </section>
+
+  <!-- ═══ DISADVANTAGES ═══ -->
+  <section class="sec" id="disadvantages">
+    <div class="bar"><h2>Disadvantages</h2><span class="note">Known gaps &middot; Volunteered, not extracted</span></div>
+    <div class="body">
+      <p class="intro">A list of everything I've played is only half the picture. So here's the
+      other column. None of this is false modesty &mdash; it's the stuff
+      you'd find out in session three anyway.</p>
+
+      <div class="rules">
+        <div class="rc">Flaws &mdash; the honest column</div>
+        <ul>
+          <li><strong>I have never owned a single Fudge die.</strong> Decades in, and the entire Fate
+          shelf is a blind spot I keep meaning to fix.</li>
+          <li><strong>I've run Call of Cthulhu exactly once, at a convention, and barely play it otherwise.</strong></li>
+          <li><strong>My first podcast died after four episodes.</strong> The Grumbling Dwarf, killed by
+          nothing more dramatic than me not making the fifth one.</li>
+          <li><strong>I like Savage Worlds, but I've only ever run it at a convention.</strong></li>
+          <li><strong>I haven't read most of what I get asked about.</strong> There's more game published
+          every month than any one person can keep up with, and I'd rather say so than bluff.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §3 FEATS ═══ -->
+  <section class="sec" id="files">
+    <div class="bar"><h2>Feats</h2><span class="note">Two running · One archived</span></div>
+    <div class="body">
+      <div class="files">
+        <a class="file" href="https://www.youtube.com/@rpgsean/streams">
+          <div class="oh"><span class="s live">● Live weekly</span></div>
+          <div class="ob">
+            <h3>Between<br>Sessions</h3>
+            <p>Saturday morning, 08:00 CT. The week's news and crowdfunding, worked out in real time with chat.</p>
+            <div class="m">255 VODs · YouTube</div>
+            <span class="go">Watch →</span>
+          </div>
+        </a>
+        <a class="file" href="https://gobagpod.com/">
+          <div class="oh"><span class="s">Twice monthly</span></div>
+          <div class="ob">
+            <h3>Go Bag</h3>
+            <p>Espionage tabletop with Harrigan. Tradecraft, burn notices, and the paperwork nobody talks about.</p>
+            <div class="m">Patrons get the unedited cut</div>
+            <span class="go">Listen →</span>
+          </div>
+        </a>
+        <a class="file" href="https://gamingandbs.com">
+          <div class="oh"><span class="s">Archive</span></div>
+          <div class="ob">
+            <h3>Gaming<br>and BS</h3>
+            <p>409 episodes with Brett over six and a half years. Still holds up, and still where most of you found me.</p>
+            <div class="m">Complete · Ended</div>
+            <span class="go">Dig in →</span>
+          </div>
+        </a>
+      </div>
+
+      <p class="fine">Produced under <a href="https://litterboxstudio.com">Litter Box Studio</a>, the
+      network these shows live on &mdash; including the ones I make with other people.</p>
+
+      <div style="height:20px"></div>
+      <div class="figrow">
+        <div>
+          <div class="figcap">Fig. 2 — At the table</div>
+          <div class="ph r43"><img src="Photos/pxl-table.jpg" alt="Sean running a convention game for four players at a round table" style="object-position:center 34%"></div>
+          <div class="figfoot">Convention slot. Four players, four hours, everyone still there at the end.</div>
+        </div>
+        <div>
+          <div class="figcap">Fig. 3 — Brett &amp; Sean, Gamehole Con</div>
+          <div class="ph r43"><img src="Photos/brett-sean.jpg" alt="Sean and Brett, co-hosts of Gaming and BS, at Gamehole Con" style="object-position:center 28%"></div>
+          <div class="figfoot">Six and a half years and 409 episodes of Gaming and BS, in one badge photo.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §4 CROWDFUNDING ═══ -->
+  <section class="sec" id="cw">
+    <div class="bar"><h2>Crowdfunding Watch</h2><span class="note">Every Friday · Free · No affiliate links</span></div>
+    <div class="body">
+      <div class="cw">
+        <div>
+          <h3>Every campaign<br><span class="r">about to close.</span></h3>
+          <p>Every tabletop RPG crowdfunding campaign closing in the next seven days, sorted by how little
+          time you have left, with funding checked Friday morning.</p>
+          <p><strong style="color:var(--ink)">No rankings, no hype — just the list.</strong></p>
+          <div style="height:12px"></div>
+          <a class="btn" href="https://crowdfunding.seans.page/">Read this week's issue</a>
+        </div>
+        <div class="signup">
+          <div class="sc">Get Crowdfunding Watch by email</div>
+          <div class="sb">
+            <form action="https://crowdfunding.seans.page/subscribe" method="post">
+              <input class="fld" type="email" name="EMAIL" id="cw-email" placeholder="you@example.com" autocomplete="email" required>
+              <label class="fldlbl" for="cw-email">Email address</label>
+              <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_0017452fe3d20c4b53fae6538_3d8f878b5c" tabindex="-1" value=""></div>
+              <input type="hidden" name="tags" value="25594">
+              <button class="btn" type="submit">Send me the Friday list</button>
+            </form>
+            <p class="fine">One email every Friday, and nothing else. Unsubscribe in one click,
+            and we won't email you about that either.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §5 ABOUT ═══ -->
+  <section class="sec" id="about">
+    <div class="bar"><h2>Background</h2><span class="note">Behind the screen since 2002</span></div>
+    <div class="body">
+      <div class="about">
+        <div>
+          <div class="figcap">Fig. 4 — Behind the screen</div>
+          <div class="ph r45"><img src="Photos/bsky-photo.jpg" alt="Sean behind a GM screen at a convention, grinning, in a red shirt" style="object-position:center 26%"></div>
+          <div class="figfoot">Tent cards out, dice down, having an obviously good time.</div>
+          <div style="height:18px"></div>
+          <div class="figcap">Fig. 5 — Call of Cthulhu, GHC</div>
+          <div class="ph r45"><img src="Photos/coc-ghc-2019.jpg" alt="Sean standing at a convention table running Call of Cthulhu, players seated around him" style="object-position:center 24%"></div>
+          <div class="figfoot">Shirt and tie. It was that kind of scenario &mdash; <a href="https://www.drivethrurpg.com/en/product/530699/gatsby-and-the-great-race?affiliate_id=457476" rel="sponsored nofollow" target="_blank">Gatsby and the Great Race</a>, a multi-table CoC convention scenario.</div>
+          <div style="height:18px"></div>
+          <div class="figcap">Fig. 6 — Notes</div>
+          <div class="ph r169"><img src="Photos/zombo-meme.jpg" alt="Sean sitting alone in a large restaurant booth with a speech bubble reading ROLL FOR INITIATIVE" style="object-position:center 42%"></div>
+          <div class="figfoot">Solo session. 19:08. Party did not arrive. Rolled anyway.</div>
+        </div>
+        <div>
+          <h3>I quit for fifteen years because I decided it was nerdy.</h3>
+          <p>Older kids handed me AD&amp;D in junior high. First character was a human ranger, and the
+          rotation was AD&amp;D, FASA's <em>Star Trek</em> and TSR's <em>Top Secret</em>. My mom found out
+          that grown adults played the same game her kid did and thought that was great &mdash; which,
+          in those years, was not the standard parental response.</p>
+          <p>Then I moved, twice in high school, away from the guys I'd started with and into schools
+          where I didn't know anyone who played. And somewhere in there I decided the whole thing was nerdy and quietly
+          let it go. What followed was about fifteen years of not gaming: the Army, out and working, back
+          in for a second hitch, out again, a job, school, and the girlfriend who became my wife. Both
+          hitches were voluntary and both put me in Germany, which finally justified two years of high
+          school German. Not one of those years involved a die.</p>
+          <p>What ended it was a going-away drink for a friend shipping out to the Army &mdash; old friends
+          in one room for the first time in years. One of them pitched the idea of playing again;
+          he was already running 3.0 for his nephew and his nephew's friends.
+          That's why 3.5 is still on the table up there. In 2003 I walked into Gen Con's first year in
+          Indianapolis and found thirty thousand people who had never needed convincing. Since then
+          I've run a 39-session Delta Green campaign to a real ending, which is thirty-eight sessions
+          more than most campaigns get.</p>
+          <p>I'm not a review channel and I'm not a rules lawyer. I'm one person who actually runs these
+          games, telling you which ones are worth your prep time — and being honest about the ones I
+          haven't run. <strong>Beyond 5e isn't snobbery, it's arithmetic.</strong> There are systems that
+          give you a better night for a quarter of the work, and most people have never heard of them.
+          D&amp;D was my front door too. It just isn't the whole house.</p>
+          <p>I run at every length: three- and four-hour convention games, one-shots, vignettes, mini-arcs,
+          and campaigns that run for months. They're different jobs with different prep, and the short
+          ones are harder than people think.</p>
+
+          <div class="rules">
+            <div class="rc">Ideals — the house rules</div>
+            <p class="creed">Be a positive force in the tabletop RPG hobby.</p>
+            <ul>
+              <li><strong>Play the person, not the build.</strong> If your character sheet is the most interesting thing about your character, we've both done something wrong.</li>
+              <li><strong>Nobody has to have read anything first.</strong> No badwrongfun. Ever.</li>
+              <li><strong>Don't yuck someone's yum.</strong> That game isn't for you? No problem. But you don't win people over to the games you love by bashing theirs. Keep it constructive.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section class="sec" id="contact">
+    <div class="bar"><h2>Contact</h2><span class="note">I answer everything eventually</span></div>
+    <div class="body">
+      <div class="contact">
+        <a href="mailto:hello@seans.page">
+          <div class="ck">Email</div>
+          <div class="cv">hello@seans.page</div>
+          <div class="cn">Con organizers, podcast bookings, corrections, arguments about Star Wars d20.</div>
+        </a>
+        <a href="https://bsky.app/profile/seans.page">
+          <div class="ck">Bluesky</div>
+          <div class="cv">@seans.page</div>
+          <div class="cn">Faster, shorter, and where most of the hobby moved. DMs are open.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="foot">
+    <div class="hire">
+      <b>Notes:</b>
+      <span>I run one-shots and convention slots for groups that keep losing their GM. A side door,
+      not the business. <a href="mailto:hello@seans.page">Ask about it →</a></span>
+    </div>
+    <div class="footrow">
+      <a href="https://www.youtube.com/@rpgsean">YouTube</a>
+      <a href="https://bsky.app/profile/seans.page">Bluesky</a>
+      <a href="https://www.patreon.com/cw/seanpkelley">Patreon</a>
+      <a href="https://crowdfunding.seans.page/feed.xml">RSS</a>
+    </div>
+    <div class="legal">
+      seans.page · © 2026 Sean P. Kelley · Cover art and campaign images belong to their respective
+      creators and link back to their pages. Campaigns are listed because they end soon, not because
+      they are endorsed. Funding figures are a snapshot taken at build time and move constantly —
+      always check the campaign page before pledging. Some links on this site are affiliate links and may
+      earn a commission on purchases at no extra cost to you.
+      · Character Record Sheet, Form 1D20, Rev. 4.
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
